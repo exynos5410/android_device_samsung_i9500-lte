@@ -18,7 +18,7 @@
 
 set -e
 
-DEVICE=i9500
+DEVICE=jalte
 VENDOR=samsung
 
 INITIAL_COPYRIGHT_YEAR=2017

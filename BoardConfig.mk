@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/i9500
+LOCAL_PATH := device/samsung/jalte
 
 BOARD_VENDOR := samsung
 
@@ -23,7 +23,7 @@ BOARD_VENDOR := samsung
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := ja3g,ja3gxx,i9500,GT-I9500
+TARGET_OTA_ASSERT_DEVICE := jalte,jaltelgt,e300s,SHV-E300S
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := universal5410
@@ -45,7 +45,7 @@ TARGET_CPU_VARIANT := cortex-a15
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := lineageos_i9500_defconfig
+TARGET_KERNEL_CONFIG := lineageos_jaltelgt_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos5410
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
@@ -101,7 +101,7 @@ CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
 
 # CMHW
 BOARD_HARDWARE_CLASS := hardware/samsung/cmhw
-BOARD_HARDWARE_CLASS += device/samsung/i9500/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/jalte/cmhw
 
 # Filesystems
 BLOCK_BASED_OTA := false
@@ -179,7 +179,7 @@ BOARD_NFC_HAL_SUFFIX := universal5410
 # Radio
 BOARD_MODEM_TYPE := xmm6360
 BOARD_PROVIDES_LIBRIL := true
-BOARD_RIL_CLASS := ../../../device/samsung/i9500/ril
+BOARD_RIL_CLASS := ../../../device/samsung/jalte/ril
 TARGET_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
 # Recovery
@@ -196,12 +196,12 @@ ifeq ($(WITH_TWRP),true)
 endif
 
 # Seccomp filters
-BOARD_SECCOMP_POLICY := device/samsung/i9500/seccomp
+BOARD_SECCOMP_POLICY := device/samsung/jalte/seccomp
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/samsung/i9500/sepolicy_common \
-    device/samsung/i9500/sepolicy_specific
+    device/samsung/jalte/sepolicy_common \
+    device/samsung/jalte/sepolicy_specific
 
 # Sensors
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
@@ -221,4 +221,4 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_BAND                        := 802_11_ABG
 
 # inherit from the proprietary version
--include vendor/samsung/i9500/BoardConfigVendor.mk
+-include vendor/samsung/jalte/BoardConfigVendor.mk
