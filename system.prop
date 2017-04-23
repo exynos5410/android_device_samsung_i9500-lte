@@ -25,6 +25,9 @@ media.stagefright.less-secure=1
 # NFC
 nfc.app_log_level=2
 
+# Sensors
+ro.sensirionhal=jalteskt
+
 # OTG
 persist.sys.isUsbOtgEnabled=true
 
@@ -33,7 +36,8 @@ rild.libargs=-d /dev/ttyS0
 rild.libpath=/system/lib/libsec-ril.so
 ro.telephony.ril_class=SlteRIL
 ro.ril.telephony.mqanelements=6
-ro.telephony.default_network=0
+telephony.lteOnGsmDevice=1
+ro.telephony.default_network=9
 
 # WiFi
 wifi.interface=wlan0
