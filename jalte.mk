@@ -51,18 +51,18 @@ PRODUCT_PACKAGES += \
     libantradio
 
 # Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-	$(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths_0.xml
-
 PRODUCT_PACKAGES += \
-    AudioWorkaround \
     audio.a2dp.default \
     audio.primary.universal5410 \
     audio.usb.default \
     audio.r_submix.default \
+    libtinyalsa \
+    libtinyxml \
     tinymix
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/audio/ysound.xml:system/etc/ysound.xml
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
