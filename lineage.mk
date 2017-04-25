@@ -11,5 +11,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=jaltelgt \
     PRODUCT_DEVICE=jalte \
     TARGET_DEVICE=jalte \
-    BUILD_FINGERPRINT="samsung/ja3gxx/ja3g:5.0.1/LRX22C/I9500XXUHOG1:user/release-keys" \
-    PRIVATE_BUILD_DESC="ja3gxx-user 5.0.1 LRX22C I9500XXUHOG1 release-keys"
+    BUILD_FINGERPRINT="samsung/jaltelgt/jaltelgt:5.0.1/LRX22C/E300LKLUGPG1:user/release-keys" \
+    PRIVATE_BUILD_DESC="jaltelgt-user 5.0.1 LRX22C E300LKLUGPG1 release-keys"

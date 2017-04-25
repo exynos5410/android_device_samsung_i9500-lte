@@ -88,14 +88,27 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 # GPS
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.cer:system/etc/gps.cer \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
-
 PRODUCT_PACKAGES += \
-    libdmitry \
-    libstlport
+    gps.default \
+    libgps.utils \
+    libloc_core \
+    libloc_eng
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.gps.agps_provider=1 \
+    ro.qc.sdk.izat.premium_enabled=0 \
+    ro.qc.sdk.izat.service_mask=0x0 \
+    persist.gps.qc_nlp_in_use=0
+
+ifeq ($(TARGET_VOICE_TECH), cdma)
+    GPS_CONF := $(COMMON_PATH)/gps/etc/gps-cdma.conf
+else
+    GPS_CONF := $(COMMON_PATH)/gps/etc/gps.conf
+endif
+
+PRODUCT_COPY_FILES += \
+    $(GPS_CONF):/system/etc/gps.conf \
+    $(LOCAL_PATH)/gps/etc/sap.conf:/system/etc/sap.conf
 
 # GPU
 PRODUCT_PACKAGES += \
@@ -175,10 +188,11 @@ PRODUCT_PACKAGES += \
 # Radio
 PRODUCT_PACKAGES += \
     libsecril-client \
-    libsecril-client-sap \
-    modemloader \
-    libxml2 \
-    libprotobuf-cpp-full
+    libsecril-client-sap
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    mobiledata.interfaces=pdp0,gprs,ppp0,rmnet0,rmnet1 \
+    ro.telephony.ril_class=smdk4x12QComRIL
 
 # Samsung
 PRODUCT_PACKAGES += \

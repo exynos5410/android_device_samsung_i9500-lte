@@ -128,24 +128,9 @@ typedef uint16_t GpsLocationFlags;
  * Flags used to specify which aiding data to delete when calling
  * delete_aiding_data().
  */
-typedef uint16_t GpsAidingData;
+typedef uint32_t GpsAidingData;
 /* IMPORTANT: Note that the following values must match
  * constants in GpsLocationProvider.java. */
-#if 0
-#define GPS_DELETE_EPHEMERIS        0x0001
-#define GPS_DELETE_ALMANAC          0x0002
-#define GPS_DELETE_POSITION         0x0004
-#define GPS_DELETE_TIME             0x0008
-#define GPS_DELETE_IONO             0x0010
-#define GPS_DELETE_UTC              0x0020
-#define GPS_DELETE_HEALTH           0x0040
-#define GPS_DELETE_SVDIR            0x0080
-#define GPS_DELETE_SVSTEER          0x0100
-#define GPS_DELETE_SADATA           0x0200
-#define GPS_DELETE_RTI              0x0400
-#define GPS_DELETE_CELLDB_INFO      0x8000
-#else
-/** SAMSUNG **/
 #define GPS_DELETE_EPHEMERIS                     0x00000001
 #define GPS_DELETE_ALMANAC                       0x00000002
 #define GPS_DELETE_POSITION                      0x00000004
@@ -173,9 +158,8 @@ typedef uint16_t GpsAidingData;
 #define BDS_DELETE_ALMANAC_CORR                  0X01000000
 #define BDS_DELETE_EPHEMERIS                     0X02000000
 #define BDS_DELETE_ALMANAC                       0X04000000
-/** SAMSUNG END **/
-#endif
-#define GPS_DELETE_ALL              0xFFFF
+
+#define GPS_DELETE_ALL                           0xFFFFFFFF
 
 /** AGPS type */
 typedef uint16_t AGpsType;
@@ -535,6 +519,11 @@ typedef uint8_t                         GnssConstellationType;
 #define AGPS_RIL_INTERFACE      "agps_ril"
 
 /**
+ * The GPS chipset can use Psc for AGPS.
+ */
+#define AGPS_USE_PSC
+
+/**
  * Name for the GPS_Geofencing interface.
  */
 #define GPS_GEOFENCING_INTERFACE   "gps_geofencing"
@@ -602,7 +591,6 @@ typedef struct {
     float   elevation;
     /** Azimuth of SV in degrees. */
     float   azimuth;
-    /** SAMSUNG **/
     int used;
 } GpsSvInfo;
 
@@ -698,6 +686,9 @@ typedef struct {
      * might rely in the old (wrong) behavior.
      */
     uint16_t lac;
+#ifdef AGPS_USE_PSC
+    uint16_t psc;
+#endif
     /** Cell id in 2G. Utran Cell id in 3G. Cell Global Id EUTRA in LTE. */
     uint32_t cid;
     /** Tracking Area Code in LTE. */
@@ -2242,3 +2233,4 @@ typedef struct {
 __END_DECLS
 
 #endif /* ANDROID_INCLUDE_HARDWARE_GPS_H */
+

@@ -23,7 +23,7 @@ BOARD_VENDOR := samsung
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := jalte,jaltelgt,e300s,SHV-E300S
+TARGET_OTA_ASSERT_DEVICE := jalte,jaltelgt,e300l,SHV-E300L
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := universal5410
@@ -164,11 +164,12 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
+# GPS
+TARGET_NO_RPC := true
+BOARD_GPS_SET_PRIVACY := true
+
 # IR
 IR_HAL_SUFFIX := universal5410
-
-# Linker
-LINKER_FORCED_SHIM_LIBS := /system/bin/gpsd|libdmitry.so
 
 # Media
 TARGET_OMX_LEGACY_RESCALING := true
@@ -177,8 +178,8 @@ TARGET_OMX_LEGACY_RESCALING := true
 BOARD_NFC_HAL_SUFFIX := universal5410
 
 # Radio
-BOARD_MODEM_TYPE := xmm6360
 BOARD_PROVIDES_LIBRIL := true
+BOARD_MODEM_TYPE := mdm9x35
 BOARD_RIL_CLASS := ../../../device/samsung/jalte/ril
 TARGET_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 

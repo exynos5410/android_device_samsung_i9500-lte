@@ -93,4 +93,11 @@
     <ctl name="AIF1ADC1 HPF Mode" value="HiFi" />
   </path>
 
+  <path name="media-second-mic">
+    <path name="main-mic" />
+    <ctl name="IN2R Volume" value="16" />
+    <ctl name="AIF1ADC1 HPF Switch" value="1" />
+    <ctl name="AIF1ADC1 HPF Mode" value="HiFi" />
+  </path>
+
 </mixer>
