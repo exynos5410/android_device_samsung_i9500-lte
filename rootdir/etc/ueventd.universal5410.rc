@@ -115,7 +115,7 @@
 /dev/s5p-smem             0660   system     drmrpc
 
 /dev/mdm                  0660   system     radio
-/dev/hsic*                0660   system     radio
+/dev/hsic*                0666   system     radio
 /dev/diag                 0660   system     radio
 
 /dev/ks_hsic_bridge       0660   system     system
